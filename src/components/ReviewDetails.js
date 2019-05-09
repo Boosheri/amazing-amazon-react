@@ -1,17 +1,19 @@
 import React from "react";
 
 export function ReviewDetails(props) {
+    const { rating, body, created_at, reviewer = {} } = props;
+    const { full_name } = reviewer;
   return (
     <div>
       <p>
-        {props.rating}
+      <h3>{rating}</h3>
         <br />
-        {props.body}
+        {body}
         <br />
-        By {props.user && props.user.full_name}
+        Reviewer: {full_name}
       </p>
       <p>
-        <small>Created at {props.created_at}</small>
+        <small>Created at: {created_at}</small>
       </p>
     </div>
   );

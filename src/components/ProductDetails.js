@@ -1,18 +1,20 @@
 import React from "react";
 
 export function ProductDetails(props) {
+  const { title, description, price, created_at, seller = {} } = props;
+	const { full_name } = seller
   return (
     <div>
-      <h2>{props.title}</h2>
+      <h2>{title}</h2>
       <p>
-        {props.description}
+        {description}
         <br />
-        {props.price}
+        {price}
         <br />
-        By {props.seller && props.seller.full_name}
+        Seller: {full_name}
       </p>
       <p>
-        <small>Created at {props.created_at}</small>
+        <small>Created at: {created_at}</small>
       </p>
     </div>
   );

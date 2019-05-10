@@ -1,4 +1,5 @@
 import React from "react";
+import { StarRating } from './StarRating';
 
 export function ReviewDetails(props) {
     const { rating, body, created_at, reviewer = {} } = props;
@@ -6,7 +7,8 @@ export function ReviewDetails(props) {
   return (
     <div>
       <p>
-      <h3>{rating}</h3>
+      <h3>Reviewer: {full_name}</h3>
+        <StarRating max={5} rating={rating} />
         <br />
         {body}
         <br />

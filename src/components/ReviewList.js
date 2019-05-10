@@ -1,23 +1,19 @@
-import React from 'react'
-import { ReviewDetails } from './ReviewDetails'
+import React from 'react';
+import { ReviewDetails } from './ReviewDetails';
 
-export function ReviewList(props) {
-    return (
-        <ul>
-            {props.reviews.map(review => {
-                return (
-                    <li>
-                        {<ReviewDetails
-                            body={review.body}
-                            rating={review.rating}
-                            created_at={review.created_at}
-                            reviewer={{ full_name: review.reviewer.full_name }}
-                        />}
-                        <br />
-                    </li>
-                )
-            })}
-        </ul>
-
-    )
+function ReviewList(props) {
+	const { reviews = [], onDeleteReview = () => {} } = props;
+	return (
+		<div className="ReviewList">
+			<ul>
+				{reviews.map((review, index) => (
+					<li key={index}>
+						<ReviewDetails onDelete={onDeleteReview} {...review} />
+					</li>
+				))}
+			</ul>
+		</div>
+	);
 }
+
+export { ReviewList };

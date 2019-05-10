@@ -6,10 +6,22 @@ import productData from '../data/productData';
 class ProductShowPage extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
+        this.state = {
 			product: productData
 		};
+		this.deleteReview = this.deleteReview.bind(this);
 	}
+
+	deleteReview(reviewId) {
+		const { product } = this.state;
+		const { reviews, ...restProduct } = product;
+		this.setState({
+			product: {
+				...restProduct,
+				reviews: reviews.filter(review => review.id !== reviewId)
+			}
+        });
+    }
 
 	render() {
 		const { reviews, ...product } = this.state.product;
@@ -17,7 +29,7 @@ class ProductShowPage extends Component {
 			<div className="ProductShowPage">
 				<ProductDetails {...product} />
 				<h3>Reviews</h3>
-				<ReviewList reviews={reviews} />
+				<ReviewList onDeleteReview={this.deleteReview} reviews={reviews} />
 			</div>
 		);
 	}

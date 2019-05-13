@@ -6,11 +6,11 @@ export const Product = {
       credentials: 'include',
     }).then(res => res.json());
   },
-  // one(id) {
-  //   return fetch(`${BASE_URL}/products/${id}`, {
-  //     credentials: "include"
-  //   }).then(res => res.json());
-  // },
+  one(id) {
+    return fetch(`${BASE_URL}/products/${id}`, {
+      credentials: "include"
+    }).then(res => res.json());
+  }
   // create(params) {
   //   console.log(params);
   //   return fetch(`${BASE_URL}/products`, {

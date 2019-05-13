@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
-import productsData from '../data/productsData';
+import { Product } from "../api/product";
 
 class ProductIndexPage extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			products: productsData
-		};
-    }
-    
-    deleteProduct(id) {
-        this.setState({
-          products: this.state.products.filter(p => p.id !== id)
-        });
-      }
+	state = {
+    products: []
+  };
+		
+	componentDidMount() {
+		Product.all().then(products => {
+			this.setState({ products });
+		});
+	}
+
+	deleteProduct(id) {
+			this.setState({
+				products: this.state.products.filter(p => p.id !== id)
+			});
+		}
 
 	render() {
+		console.log (Product )
 		return (
 			<div className="ProductIndexPage">
 				<h2>Products</h2>
